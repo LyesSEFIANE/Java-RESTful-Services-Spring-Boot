@@ -12,22 +12,44 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/**
+ * 
+ * @author Lyes SEFIANE
+ *
+ */
 @ControllerAdvice
 @RestController
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
-
+	
+	/**
+	 * Handle All Unchecked Exceptions
+	 * 
+	 * @param ex
+	 * @param request
+	 * @return ResponseEntity<Object>
+	 */
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
 		ExceptionResponse exception = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity<Object>(exception, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+	/**
+	 * Handle User Not Found Exceptions
+	 * 
+	 * @param ex
+	 * @param request
+	 * @return ResponseEntity<Object>
+	 */
 	@ExceptionHandler(UserNotFoundException.class)
 	public final ResponseEntity<Object> handleUserNotFoundExceptions(UserNotFoundException ex, WebRequest request) {
 		ExceptionResponse exception = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity<Object>(exception, HttpStatus.NOT_FOUND);
 	}
 
+	/**
+	 * Handle Method Argument Not Valid
+	 */
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {

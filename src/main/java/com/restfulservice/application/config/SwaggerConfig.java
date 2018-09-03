@@ -15,6 +15,11 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * 
+ * @author Lyes SEFIANE
+ *
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -25,7 +30,7 @@ public class SwaggerConfig {
 			"urn:tos", DEFAULT_CONTACT, "Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0",
 			new ArrayList<VendorExtension>());
 	public static final Set<String> DEFAUL_PROCEDURES_CONSUMES = new HashSet<>(
-			Arrays.asList("application/json", "application/xml"));
+			Arrays.asList("application/json"));
 
 	@Bean
 	public Docket api() {

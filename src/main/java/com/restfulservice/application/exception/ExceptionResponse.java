@@ -2,11 +2,20 @@ package com.restfulservice.application.exception;
 
 import java.util.Date;
 
+/**
+ * 
+ * @author Lyes SEFIANE
+ *
+ */
 public class ExceptionResponse {
-	
+
 	private Date timeStampe;
 	private String message;
 	private String details;
+	
+	public ExceptionResponse() {
+		
+	}
 	
 	public ExceptionResponse(Date timeStampe, String message, String details) {
 		super();

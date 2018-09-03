@@ -6,25 +6,40 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description="Descption of User")
+/**
+ * 
+ * @author Lyes SEFIANE
+ *
+ */
+@ApiModel(description="User Description")
 @Entity
 public class User {
 	
-	@ApiModelProperty(notes="Identifier Of User", required=true, allowEmptyValue=false)
 	@Id
 	@GeneratedValue
+	@ApiModelProperty(notes="User Identifier, Generated Value", required=true)
 	private Integer id;
+	
 	@NotNull
+	@ApiModelProperty(notes="User Name", required=true, allowEmptyValue=false)
 	private String name;
+	
+	@PastOrPresent
+	@NotNull
+	@ApiModelProperty(notes="User Date Of Birth, Should Be In The Past")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date birthDay;
-	// User 1..N Posts
+	
+	@ApiModelProperty(notes="User Posts")
 	@OneToMany(mappedBy="user")
 	private List<Post> posts;
 	

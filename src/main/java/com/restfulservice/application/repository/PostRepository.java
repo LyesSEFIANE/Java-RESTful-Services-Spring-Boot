@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.restfulservice.application.service;
+package com.restfulservice.application.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
