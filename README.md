@@ -1,4 +1,4 @@
-# Java-RESTful-Services-Spring-Boot
+# Spring Boot RESTful web services Example
 
 Developing RESTful web services is fun. 
 The combination of Spring Boot, Spring Web MVC, Spring Web Services and JPA makes it even more fun.
